@@ -2,43 +2,90 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="signuppage" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <body>
-<form>
-<fieldset>
-  
-<legend><b> Friend's Book Sign up!</b></legend>
-    <div class="container">
+<form >
+
+
+<h1><b> Friend's Book Sign up!</b></h1>
+  <div class="container">
 	  <div class="row"><br>
+	    </div>
        First name:<br>
            <div class="col-xs-6 col-md-6">
-                <input type="text" class="form-control" name="firstname" placeholder="First Name"  required  />
+                <input type="text" class="form-control" name="firstname" placeholder="First Name"  id="firstname" required  />
             </div> <br>
                  Lastname :<br>
                     <div class="col-xs-6 col-md-6">
-                      <input type="text" class="form-control" name="lastname" placeholder="Last Name"  required />
+                      <input type="text" class="form-control" name="lastname" placeholder="Last Name" id="lastname"  required />
                     </div><br>
                       EmailId :<br>
 					     <div class="col-xs-6 col-md-6">
-                           <input  type="text" class="form-control" name="emailid" placeholder="your email id" required  />
+                           <input  type="text" class="form-control" name="emailid" placeholder="your email id" id="emailid"  required  />
                          <div><br>	
                           Phone No :<br>
                              <div class="col-xs-6 col-md-6">
-		                       <input  type="text" class="form-control" name="Phoneno" placeholder="your Phone no" required  />
+		                       <input  type="text" class="form-control" name="Phoneno" placeholder="your Phone no" id="phone no" required  />
                              <div><br>
                               Gender:<br>
                                  <label class="radio-inline">
-                                     <input type="radio" name="sex" id="inlineCheckbox1" value="male" />
+                                     <input type="radio" name="sex" id="inlineCheckbox1" value="male" id="male" required />
                                 Male</label>
                                  <label class="radio-inline">
-                                 <input type="radio" name="sex" id="inlineCheckbox2" value="female" />
-                                    Female</label><br>
-                                      </br> 
-                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-        </div>
-    </div>
- </fieldset>
- </form>
-</body>
+                                 <input type="radio" name="sex" id="inlineCheckbox2" value="female" id="female" required />
+                                  Female</label><br>
+                                      <br>
+                                         <select name="sports" multiple>
+                                              <option value="circket">Circket</option>
+                                              <option value="Tennis">Tennis</option>
+                                              <option value="Hockey">Hockey</option>
+                                            <option value="Badminton">Badminton</option>
+                                        </select><br><br>
+                                       Remember me<label>
+										                   <input type="checkbox"  id="chk_remember" >
+									                      </label><br><br>
+                                    <input type="button" class="form-control" value="save"/>
+                                  </div>
+                           	</div>
+                      </div>
+                </form> 
+            <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+       </body>
+   <script>
+   function pageloaded(){
+        document.getElementById("firstname").value=localStorage.getItem("firstname");
+        document.getElementById("lastname").value=localStorage.getItem("lastname");
+        document.getElementById("emailid").value=localStorage.getItem("emailid");
+        document.getElementById("phone no").value=localStorage.getItem("phone no");
+        document.getElementById("male").value=localStorage.getItem("male");
+        document.getElementById("female").value=localStorage.getItem("female");
+	      var chk_remenber = document.getElementById("chk_remember");
+      }
+chk_remenber.addEventListener("click",function(){
+
+        if(chk_remenber.checked){
+				     var test_firstname =  document.getElementById("firstname").value;
+             var test_lastname =  document.getElementById("lastname").value;
+             var test_emailid =  document.getElementById("emailid").value;
+             var test_phoneno =  document.getElementById("phone no").value;
+             var test_male =  document.getElementById("male").value;
+             var test_female =  document.getElementById("female").value;
+					      localStorage.setItem("firstname",test_firstname);
+						    localStorage.setItem("lastname",test_lastname);
+                localStorage.setItem("emailid",test_emailid);
+                localStorage.setItem("phone no",test_phoneno);
+                localStorage.setItem("male",test_male);
+                localStorage.setItem("female",test_female);
+					  }
+            else{
+					      window.localStorage.setItem("firstname","");
+					      window.localStorage.setItem("lastname","");
+                window.localStorage.setItem("emailid","");
+                window.localStorage.setItem("phone no","");
+                window.localStorage.setItem("male","");
+                window.localStorage.setItem("female","");
+              }
+				})
+        </script>
 </head>
 </html>
-
